@@ -5,7 +5,6 @@ import { useDispatch, useSelector } from "react-redux";
 
 
 const NavBar = () => {
-  // const { user, logOut } = useContext(AuthContext);
   const { theme } = useSelector((state) => state.theme);
   const dispatch = useDispatch();
   const user = true;

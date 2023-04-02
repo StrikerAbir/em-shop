@@ -1,8 +1,10 @@
 import Head from "next/head";
 import { Inter } from "next/font/google";
-import Banner from "@/components/Shared/HomePageSections/Banner/Banner";
+
 import { useSelector } from "react-redux";
-import Stats from "@/components/Shared/HomePageSections/Stats/Stats";
+import Stats from "@/components/HomePageSections/Stats/Stats";
+import Banner from "@/components/HomePageSections/Banner/Banner";
+
 
 
 
