@@ -1,19 +1,22 @@
 import Head from "next/head";
 import { Inter } from "next/font/google";
 
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import Stats from "@/components/HomePageSections/Stats/Stats";
 import Banner from "@/components/HomePageSections/Banner/Banner";
-
-
-
-
-
+import { useEffect } from "react";
+import fetchProductData from "@/redux/thunk/products/fetchProducts";
 
 const inter = Inter({ subsets: ["latin"] });
 
 export default function Home() {
-  const {theme}=useSelector(state=>state.theme)
+  const dispatch=useDispatch()
+  const { theme } = useSelector((state) => state.theme);
+  const { products } = useSelector((state) => state.products);
+  useEffect(() => {
+    dispatch(fetchProductData())
+  }, [dispatch]);
+  console.log(products);
   return (
     <>
       <Head>
