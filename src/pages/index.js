@@ -1,22 +1,13 @@
 import Head from "next/head";
 import { Inter } from "next/font/google";
-
-import { useDispatch, useSelector } from "react-redux";
 import Stats from "@/components/HomePageSections/Stats/Stats";
 import Banner from "@/components/HomePageSections/Banner/Banner";
-import { useEffect } from "react";
-import fetchProductData from "@/redux/thunk/products/fetchProducts";
+import Categories from "@/components/Categories/Categories";
 
 const inter = Inter({ subsets: ["latin"] });
 
 export default function Home() {
-  const dispatch=useDispatch()
-  const { theme } = useSelector((state) => state.theme);
-  const { products } = useSelector((state) => state.products);
-  useEffect(() => {
-    dispatch(fetchProductData())
-  }, [dispatch]);
-  console.log(products);
+ 
   return (
     <>
       <Head>
@@ -25,8 +16,9 @@ export default function Home() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <div className="px-5" data-theme={theme ? "dark" : "light"}>
+      <div className="px-5" >
         <Banner></Banner>
+        <Categories></Categories>
         <Stats></Stats>
       </div>
     </>

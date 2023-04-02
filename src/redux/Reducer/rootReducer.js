@@ -7,6 +7,6 @@ const { combineReducers } = require("redux");
 const rootReducer = combineReducers({
     theme: themeReducer,
     user: userReducer,
-    products: productReducer
+    products: productReducer,
 })
 export default rootReducer;

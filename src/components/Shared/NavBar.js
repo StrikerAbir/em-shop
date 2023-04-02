@@ -10,7 +10,7 @@ const NavBar = () => {
   const router=useRouter()
   const { theme } = useSelector((state) => state.theme);
   const { currentUser } = useSelector((state) => state.user);
-  console.log(currentUser);
+  // console.log(currentUser);
   const dispatch = useDispatch();
 
   const handleLogOut = () => {

@@ -1,4 +1,4 @@
-const { loadProduct } = require("@/redux/actionCreators/productAciton");
+const { loadProduct} = require("@/redux/actionCreators/productAciton");
 
 const fetchProductData = () => {
     return async(dispatch, getState) => {
@@ -10,4 +10,5 @@ const fetchProductData = () => {
         }
     }
 }
+
 export default fetchProductData
