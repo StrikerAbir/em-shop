@@ -123,9 +123,6 @@ const ProductDetail = () => {
         </div>
       </div>
     );
-    } else {
-        
-        router.push('/login')
     }
 };
 

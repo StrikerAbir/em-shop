@@ -22,9 +22,7 @@ const Customer = () => {
             <CustomerList></CustomerList>
           </>
         );
-    } else {
-        router.push('/login')
-    }
+    } 
 };
 
 export default Customer;

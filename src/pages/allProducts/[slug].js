@@ -12,7 +12,7 @@ const Products = () => {
     const { slug } = router.query
     useEffect(()=>{
         dispatch(fetchCatProductData(slug))
-    },[dispatch])
+    },[dispatch,slug])
     
     return (
       <div>

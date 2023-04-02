@@ -23,9 +23,7 @@ const MyCart = () => {
             <Cart></Cart>
           </div>
         );
-    } else {
-        router.push('/login')
-    }
+    } 
 };
 
 export default MyCart;
