@@ -1,14 +1,16 @@
 import Head from "next/head";
-import Image from "next/image";
 import { Inter } from "next/font/google";
-import styles from "@/styles/Home.module.css";
-import { useDispatch, useSelector } from "react-redux";
-import { toggleTheme } from "@/redux/actionCreators/themeToggle";
+import Banner from "@/components/Shared/HomePageSections/Banner/Banner";
+import { useSelector } from "react-redux";
+
+
+
+
 
 const inter = Inter({ subsets: ["latin"] });
 
 export default function Home() {
-
+  const {theme}=useSelector(state=>state.theme)
   return (
     <>
       <Head>
@@ -17,8 +19,8 @@ export default function Home() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <div>
-       
+      <div data-theme={theme ? "dark" : "light"}>
+        <Banner></Banner>
       </div>
     </>
   );
