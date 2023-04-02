@@ -1,4 +1,4 @@
-import { USER } from "../actionTypes/actionTypes";
+import { LOGOUT, USER } from "../actionTypes/actionTypes";
 
 export const currentUserSet = (data) => {
   return {
@@ -6,3 +6,8 @@ export const currentUserSet = (data) => {
       payload:data
   };
 };
+export const logoutUser = () => {
+    return {
+        type:LOGOUT
+    }
+}

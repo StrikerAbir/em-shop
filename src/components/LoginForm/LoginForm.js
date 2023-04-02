@@ -4,18 +4,39 @@ import toast from "react-hot-toast";
 import img from "../../assets/images/section.webp";
 import Link from "next/link";
 import Image from "next/image";
+import { useDispatch } from "react-redux";
+import { currentUserSet } from "@/redux/actionCreators/currentUserSet";
+import { setAuthToken } from "@/utils/authToken";
+import { useRouter } from "next/router";
 
 
 const LoginForm = () => {
-
+    const router=useRouter()
+    const dispatch = useDispatch();
   const handleLogin = (event) => {
     event.preventDefault();
     const form = event.target;
     const mobile = form.mobile.value;
       const password = form.password.value;
-    
-   
+      const user={mobile,password}
+    loginUser(user)
   };
+    const loginUser = (user) => {
+       fetch("http://localhost:1000/loginUser", {
+         method: "POST",
+         headers: {
+           "content-type": "application/json",
+         },
+         body: JSON.stringify(user),
+       })
+         .then((res) => res.json())
+           .then((data) => {
+          dispatch(currentUserSet(data));
+          setAuthToken(data);
+          toast.success("Successfully Login");
+          router.push("/");
+         });
+  }
 
   return (
     <div className="hero w-full py-20">

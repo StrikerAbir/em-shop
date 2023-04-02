@@ -1,16 +1,21 @@
+import { logoutUser } from "@/redux/actionCreators/currentUserSet";
 import { toggleTheme } from "@/redux/actionCreators/themeToggle";
 import Link from "next/link";
+import { useRouter } from "next/router";
 import { FaUser } from "react-icons/fa";
 import { useDispatch, useSelector } from "react-redux";
 
 
 const NavBar = () => {
+  const router=useRouter()
   const { theme } = useSelector((state) => state.theme);
+  const { currentUser } = useSelector((state) => state.user);
+  console.log(currentUser);
   const dispatch = useDispatch();
-  const user = false;
-  const role = "Buyer";
+
   const handleLogOut = () => {
-    logOut();
+    dispatch(logoutUser())
+    router.push("/");
   };
   const menuItems = (
     <>
@@ -24,7 +29,7 @@ const NavBar = () => {
   const menuItems2 = (
     <>
       <li tabIndex={0} className="z-10 font-semibold">
-        {user && (
+        {currentUser?.length > 0 && (
           <div className="justify-between">
             DashBoard
             <svg
@@ -39,7 +44,7 @@ const NavBar = () => {
           </div>
         )}
         <ul className="p-2 bg-base-100">
-          {role === "Buyer" && (
+          {currentUser[0]?.user_type === "customer" && (
             <>
               <li>
                 <Link href="/dashboard/wishlist">My Cart</Link>
@@ -47,7 +52,7 @@ const NavBar = () => {
             </>
           )}
 
-          {role === "Admin" && (
+          {currentUser[0]?.user_type === "admin" && (
             <>
               <li>
                 <Link href="/dashboard/allSeller">Admin Dashboard</Link>
@@ -58,11 +63,11 @@ const NavBar = () => {
         </ul>
       </li>
       <li className="font-semibold">
-        {user ? (
+        {currentUser.length > 0 ? (
           <>
-            <Link onClick={handleLogOut} href="/login">
+            <button onClick={handleLogOut} >
               Logout
-            </Link>
+            </button>
             <div className="border-l-2">
               <div className="avatar">
                 <div className="w-4 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2">
