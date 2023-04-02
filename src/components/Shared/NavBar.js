@@ -7,7 +7,7 @@ import { useDispatch, useSelector } from "react-redux";
 const NavBar = () => {
   const { theme } = useSelector((state) => state.theme);
   const dispatch = useDispatch();
-  const user = true;
+  const user = false;
   const role = "Buyer";
   const handleLogOut = () => {
     logOut();
