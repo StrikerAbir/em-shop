@@ -8,9 +8,7 @@ import { toggleTheme } from "@/redux/actionCreators/themeToggle";
 const inter = Inter({ subsets: ["latin"] });
 
 export default function Home() {
-  const { theme } = useSelector((state) => state.theme);
-  const dispatch = useDispatch();
-  console.log(theme);
+
   return (
     <>
       <Head>
@@ -20,14 +18,7 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <div>
-        ok
-        <button
-          onClick={() =>
-            dispatch(toggleTheme())
-          }
-        >
-          toggle
-        </button>
+       
       </div>
     </>
   );
