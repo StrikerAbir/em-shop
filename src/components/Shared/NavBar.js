@@ -47,7 +47,7 @@ const NavBar = () => {
           {currentUser[0]?.user_type === "customer" && (
             <>
               <li>
-                <Link href="/dashboard/wishlist">My Cart</Link>
+                <Link href="/myCart">My Cart</Link>
               </li>
             </>
           )}

@@ -1,4 +1,4 @@
-import { LOAD_CATEGORY, LOAD_CATPRODUCT, LOAD_PRODUCT } from "../actionTypes/actionTypes"
+import { ADD_TO_CART, LOAD_CATEGORY, LOAD_CATPRODUCT, LOAD_PRODUCT, REMOVE_FROM_CART } from "../actionTypes/actionTypes"
 
 export const loadProduct = (product) => {
     // console.log(product);
@@ -22,3 +22,17 @@ export const loadCatProduct = (categoryP) => {
         payload:categoryP
     }
 }
+
+export const addToCart = (data) => {
+  return {
+    type: ADD_TO_CART,
+    payload: data,
+  };
+};
+
+export const removeFromCart = (data) => {
+  return {
+    type: REMOVE_FROM_CART,
+    payload: data,
+  };
+};

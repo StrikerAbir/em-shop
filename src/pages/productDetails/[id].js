@@ -1,13 +1,15 @@
+import { addToCart } from "@/redux/actionCreators/productAciton";
 import { useRouter } from "next/router";
 import React, { useEffect, useState } from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 
 const ProductDetail = () => {
   const router = useRouter();
   const { currentUser } = useSelector((state) => state.user);
   const { id } = router.query;
   const [details, setDetails] = useState({});
-  console.log(details);
+    // console.log(details);
+   const dispatch=useDispatch()
   useEffect(() => {
     fetch(`http://localhost:1000/productDetails?id=${id}`)
       .then((res) => res.json())
@@ -99,7 +101,7 @@ const ProductDetail = () => {
                         <div className="my-4">
                           <button
                             className="btn btn-primary"
-                          
+                          onClick={()=>dispatch(addToCart(details))}
                           >
                             Add To Cart
                           </button>
@@ -115,8 +117,10 @@ const ProductDetail = () => {
         
       </div>
     );
+    } else {
+        
+        router.push('/login')
     }
-    router.push('/login')
 };
 
 export default ProductDetail;
