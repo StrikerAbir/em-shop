@@ -14,7 +14,7 @@ const ProductDetail = () => {
     fetch(`http://localhost:1000/productDetails?id=${id}`)
       .then((res) => res.json())
       .then((data) => setDetails(data));
-  }, []);
+  }, [id]);
     if (currentUser.length) {
       const {
         image,
