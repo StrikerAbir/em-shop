@@ -12,7 +12,7 @@ const ProductDetail = () => {
     // console.log(details);
    const dispatch=useDispatch()
   useEffect(() => {
-    fetch(`http://localhost:1000/productDetails?id=${id}`)
+    fetch(`https://em-shop-server.vercel.app/productDetails?id=${id}`)
       .then((res) => res.json())
       .then((data) => setDetails(data));
   }, [id]);

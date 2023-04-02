@@ -10,42 +10,45 @@ import { setAuthToken } from "@/utils/authToken";
 
 const SignUpForm = () => {
   const router = useRouter();
-    const dispatch = useDispatch();
+  const dispatch = useDispatch();
   const handleLogin = (event) => {
     event.preventDefault();
     const form = event.target;
     const name = form.name.value;
     const mobile = form.mobile.value;
     const email = form.email.value;
-      const password = form.password.value;
-      const user_type='customer'
+    const password = form.password.value;
+    const user_type = "customer";
 
-      const user = {
-          name,mobile,email,password,user_type
-      }
-      saveUser(user)
+    const user = {
+      name,
+      mobile,
+      email,
+      password,
+      user_type,
+    };
+    saveUser(user);
   };
-    const saveUser = (user) => {
-        fetch("http://localhost:1000/users", {
-          method: "POST",
-          headers: {
-            "content-type": "application/json",
-          },
-          body: JSON.stringify(user),
-        })
-          .then((res) => res.json())
-          .then((data) => {
-              if (data.user) {
-                  dispatch(currentUserSet(data.user))
-                  setAuthToken(data.user)
-                  toast.success('Successfully registered');
-                  router.push("/");
-              } else {
-                  toast.error(data.message)
-            }
-          });
-            
-}
+  const saveUser = (user) => {
+    fetch("https://em-shop-server.vercel.app/users", {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify(user),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.user) {
+          dispatch(currentUserSet(data.user));
+          setAuthToken(data.user);
+          toast.success("Successfully registered");
+          router.push("/");
+        } else {
+          toast.error(data.message);
+        }
+      });
+  };
   return (
     <div className="hero w-full py-10">
       <div className="hero-content flex-col w-full lg:flex-row">

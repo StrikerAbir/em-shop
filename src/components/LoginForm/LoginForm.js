@@ -1,4 +1,3 @@
-
 import toast from "react-hot-toast";
 
 import img from "../../assets/images/section.webp";
@@ -9,40 +8,39 @@ import { currentUserSet } from "@/redux/actionCreators/currentUserSet";
 import { setAuthToken } from "@/utils/authToken";
 import { useRouter } from "next/router";
 
-
 const LoginForm = () => {
-    const router=useRouter()
-    const dispatch = useDispatch();
+  const router = useRouter();
+  const dispatch = useDispatch();
   const handleLogin = (event) => {
     event.preventDefault();
     const form = event.target;
     const mobile = form.mobile.value;
-      const password = form.password.value;
-      const user={mobile,password}
-    loginUser(user)
+    const password = form.password.value;
+    const user = { mobile, password };
+    loginUser(user);
   };
-    const loginUser = (user) => {
-       fetch("http://localhost:1000/loginUser", {
-         method: "POST",
-         headers: {
-           "content-type": "application/json",
-         },
-         body: JSON.stringify(user),
-       })
-         .then((res) => res.json())
-           .then((data) => {
-             console.log(data);
-             if (data.user) {
-              //  console.log(data.result);
-               dispatch(currentUserSet(data.result));
-               setAuthToken(data.result);
-               toast.success("Successfully login");
-               router.push("/");
-             } else {
-               toast.error(data.message);
-             }
-         });
-  }
+  const loginUser = (user) => {
+    fetch("https://em-shop-server.vercel.app/loginUser", {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify(user),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+        if (data.user) {
+          //  console.log(data.result);
+          dispatch(currentUserSet(data.result));
+          setAuthToken(data.result);
+          toast.success("Successfully login");
+          router.push("/");
+        } else {
+          toast.error(data.message);
+        }
+      });
+  };
 
   return (
     <div className="hero w-full py-20">

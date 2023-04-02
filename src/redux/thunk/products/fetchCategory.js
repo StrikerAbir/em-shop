@@ -1,9 +1,8 @@
 import { loadCategory } from "@/redux/actionCreators/productAciton";
 
-
 const fetchCategoryData = () => {
   return async (dispatch, getState) => {
-    const res = await fetch("http://localhost:1000/categories");
+    const res = await fetch("https://em-shop-server.vercel.app/categories");
     const data = await res.json();
     // console.log(data);
     if (data.length) {
