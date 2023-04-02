@@ -55,7 +55,7 @@ const NavBar = () => {
           {currentUser[0]?.user_type === "admin" && (
             <>
               <li>
-                <Link href="/dashboard">Admin Dashboard</Link>
+                <Link href="/adminDashbord">Admin Dashboard</Link>
                 <Link href="/customer">Customer List</Link>
               </li>
             </>
