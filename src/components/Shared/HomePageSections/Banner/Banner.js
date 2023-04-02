@@ -16,7 +16,7 @@ const Banner = () => {
             <h4 className="lg:text-xl text-xs text-center my-5">
               EM Shop is a marketplace where you can buy products at the lowest possible price.
             </h4>
-            <p className="font-bold text-2xl text-center">{`"`}OLD IS GOLD{`"`}</p>
+            <p className="font-bold text-2xl text-center">{`"`}Exclusive Marketplace{`"`}</p>
           </div>
         </div>
       </div>

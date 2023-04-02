@@ -10,7 +10,7 @@ export default function App({ Component, pageProps }) {
     <>
       <Provider store={store}>
         
-        <div >
+        <div className='max-w-[1920px] mx-auto'>
           <NavBar></NavBar>
           <Component {...pageProps} />
           <Footer></Footer>
