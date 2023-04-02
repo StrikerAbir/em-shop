@@ -5,7 +5,7 @@ import { useDispatch, useSelector } from 'react-redux';
 const Cart = () => {
     const { cart } = useSelector(state => state.products)
     const dispatch = useDispatch();
-    console.log(cart);
+    // console.log(cart);
     return (
       <div className="bg-base-200 p-10  ">
         <h3 className="text-3xl my-5 ">My Cart</h3>

@@ -55,8 +55,8 @@ const NavBar = () => {
           {currentUser[0]?.user_type === "admin" && (
             <>
               <li>
-                <Link href="/dashboard/allSeller">Admin Dashboard</Link>
-                <Link href="/dashboard/allBuyer">Customer List</Link>
+                <Link href="/dashboard">Admin Dashboard</Link>
+                <Link href="/customer">Customer List</Link>
               </li>
             </>
           )}
@@ -74,7 +74,7 @@ const NavBar = () => {
                   <FaUser></FaUser>
                 </div>
               </div>
-              {/* <p>{user?.displayName}</p> */}
+              <p>{currentUser[0]?.name}</p>
             </div>
           </>
         ) : (

@@ -31,10 +31,16 @@ const LoginForm = () => {
        })
          .then((res) => res.json())
            .then((data) => {
-          dispatch(currentUserSet(data));
-          setAuthToken(data);
-          toast.success("Successfully Login");
-          router.push("/");
+             console.log(data);
+             if (data.user) {
+              //  console.log(data.result);
+               dispatch(currentUserSet(data.result));
+               setAuthToken(data.result);
+               toast.success("Successfully login");
+               router.push("/");
+             } else {
+               toast.error(data.message);
+             }
          });
   }
 
